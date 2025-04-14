@@ -1,0 +1,17 @@
+{
+  "routes": [
+    {
+      "route": "/api/message*",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/api/avatar/*",
+      "rewrite": "https://team8containerapp.azurecontainerapps.io/api/avatar/{rest}",
+      "allowedRoles": ["anonymous"]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  }
+}

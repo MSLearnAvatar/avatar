@@ -12,7 +12,7 @@ let ws;
 // WebSocket 연결 설정
 function connectWebSocket() {
   const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-  ws = new WebSocket(`${protocol}//${window.location.host}/api/ws`);
+  ws = new WebSocket(`${protocol}//${window.location.host}/api/avatar/ws`);
 
   ws.onopen = function () {
     console.log("WebSocket 연결 성공");
