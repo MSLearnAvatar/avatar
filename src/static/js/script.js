@@ -12,7 +12,7 @@ let ws;
 // WebSocket 연결 설정
 function connectWebSocket() {
   const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-  ws = new WebSocket(`${protocol}//${window.location.host}/ws`);
+  ws = new WebSocket(`${protocol}//${window.location.host}/api/ws`);
 
   ws.onopen = function () {
     console.log("WebSocket 연결 성공");
@@ -43,8 +43,10 @@ function connectWebSocket() {
     console.error("WebSocket 오류:", error);
     addMessage(
       "system",
-      "서버 연결 오류가 발생했습니다. 페이지를 새로고침 해주세요."
+      "API 서버 연결 오류가 발생했습니다. 잠시 후 자동으로 재연결을 시도합니다."
     );
+    // 재연결 시도 시간을 늘림
+    setTimeout(connectWebSocket, 5000);
   };
 
   ws.onclose = function () {
