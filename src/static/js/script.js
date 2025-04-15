@@ -75,7 +75,7 @@ function initializeWelcomeContainer() {
     <div class="welcome-content">
       <div class="welcome-title">
         <span>MS Learner</span>
-        <span class="welcome-description">는 Microsoft Azure의 제품군의 활용과 이를 통한 서비스 구현을 돕는 비공식 AI 챗봇 서비스입니다.</span>
+        <span class="welcome-description">는 Microsoft Azure 제품군의 활용과 이를 통한 서비스 구현을 돕는 비공식 AI 챗봇 서비스입니다.</span>
       </div>
       <div class="welcome-links-container">
         <div class="welcome-links-title">

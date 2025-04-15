@@ -71,6 +71,8 @@ button:disabled {
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 #remoteVideo {
@@ -101,11 +103,13 @@ button:disabled {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 #chatHistory {
-  height: 500px;
+  height: 600px;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
@@ -115,6 +119,8 @@ button:disabled {
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 
 .user-message {
@@ -169,27 +175,68 @@ button:disabled {
 
 /* 입력 영역 */
 .input-area {
+  width: 100%;
+  height: auto;
+  padding: 10px 20px;
+  background: white;
+  border-radius: 12px;
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+  outline-offset: -1px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
-  margin-bottom: 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 #userInput {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-right: 10px;
+  border: none;
+  outline: none;
+  resize: none;
   font-family: "Noto Sans KR", sans-serif;
-  resize: vertical;
-  min-height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #818181;
+  background: transparent;
+  min-height: 50px;
   max-height: 120px;
-  transition: border-color 0.3s ease;
+  padding: 0;
+  margin-right: 10px;
 }
 
-#userInput:focus {
-  outline: none;
-  border-color: #1976d2;
+#userInput::placeholder {
+  color: #818181;
+}
+
+#sendButton {
+  width: 50px;
+  height: 50px;
+  background: #407fff;
+  border-radius: 30px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+#sendButton img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+#sendButton:hover {
+  background: #2d5bb8;
+}
+
+#sendButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
 
 /* 로더 */
