@@ -8,6 +8,7 @@ let peerConnection;
 let isSpeaking = false;
 let sessionActive = false;
 let ws;
+let currentDate = new Date();
 
 // WebSocket 연결 설정
 function connectWebSocket() {
@@ -491,18 +492,29 @@ marked.setOptions({
 function addMessage(type, content) {
   const chatHistory = document.getElementById("chatHistory");
   const messageDiv = document.createElement("div");
+  const timestampDiv = document.createElement("div");
+
   switch (type) {
     case "user":
       messageDiv.className = "user-message";
-      messageDiv.textContent = `나: ${content}`;
+      messageDiv.textContent = `${content}`;
+      timestampDiv.className = "message-timestamp";
+      timestampDiv.textContent = formatTimestamp(currentDate);
+      messageDiv.appendChild(timestampDiv);
       break;
     case "assistant":
       messageDiv.className = "assistant-message";
       messageDiv.innerHTML = marked.parse(`AI: ${content}`);
+      timestampDiv.className = "message-timestamp";
+      timestampDiv.textContent = formatTimestamp(currentDate);
+      messageDiv.appendChild(timestampDiv);
       break;
     case "assistant-text":
       messageDiv.className = "assistant-message";
       messageDiv.innerHTML = marked.parse(`Text AI: ${content}`);
+      timestampDiv.className = "message-timestamp";
+      timestampDiv.textContent = formatTimestamp(currentDate);
+      messageDiv.appendChild(timestampDiv);
       break;
     case "system":
       messageDiv.className = "error-message";
@@ -513,6 +525,15 @@ function addMessage(type, content) {
   }
   chatHistory.appendChild(messageDiv);
   chatHistory.scrollTop = chatHistory.scrollHeight;
+}
+
+// 타임스탬프 포맷팅 함수
+function formatTimestamp(date) {
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  const hours = date.getHours().toString().padStart(2, "0");
+  const minutes = date.getMinutes().toString().padStart(2, "0");
+  return `${month}/${day} ${hours}:${minutes}`;
 }
 
 // 오류 처리 함수
