@@ -1,15 +1,18 @@
 {
   "routes": [
     {
-      "route": "/api/avatar/*",
-      "allowedRoles": ["anonymous"]
+      "route": "/api/ws",
+      "allowedRoles": ["anonymous"],
+      "backendUri": "https://team8-api-service.azurewebsites.net/api/ws"
+    },
+    {
+      "route": "/api/*",
+      "allowedRoles": ["anonymous"],
+      "backendUri": "https://team8-api-service.azurewebsites.net/api/*"
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
-  },
-  "platform": {
-    "apiRuntime": "node:16"
   }
 }
