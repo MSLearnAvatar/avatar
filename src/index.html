@@ -17,15 +17,13 @@
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.1/dist/purify.min.js"></script>
   </head>
   <body>
-    <h1 id="pageTitle">Azure AI Avatar Chat</h1>
-
     <div class="container">
-      <div class="main-container">
-        <div id="videoContainer">
-          <div id="remoteVideo"></div>
-          <div id="subtitles" class="hidden"></div>
-        </div>
+      <div id="videoContainer">
+        <div id="remoteVideo"></div>
+        <div id="subtitles" class="hidden"></div>
+      </div>
 
+      <div class="main-container">
         <div class="chat-container">
           <div id="chatHistory"></div>
           <div class="input-area">
@@ -36,14 +34,14 @@
             <button id="sendButton">전송</button>
           </div>
         </div>
-      </div>
 
-      <div class="controls">
-        <button id="startSessionButton">아바타 세션 시작</button>
-        <button id="stopSessionButton" disabled>세션 중지</button>
-        <button id="stopSpeakingButton" disabled>말하기 중지</button>
-        <button id="clearChatButton">대화 내역 지우기</button>
-        <div class="loader" id="loader"></div>
+        <div class="controls">
+          <button id="startSessionButton">아바타 세션 시작</button>
+          <button id="stopSessionButton" disabled>세션 중지</button>
+          <button id="stopSpeakingButton" disabled>말하기 중지</button>
+          <button id="clearChatButton">대화 내역 지우기</button>
+          <div class="loader" id="loader"></div>
+        </div>
       </div>
     </div>
 

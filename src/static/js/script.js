@@ -57,7 +57,42 @@ function connectWebSocket() {
 }
 
 // 페이지 로드 시 WebSocket 연결
-window.onload = connectWebSocket;
+window.onload = function () {
+  connectWebSocket();
+  initializeWelcomeContainer();
+};
+
+// Welcome Container 초기화
+function initializeWelcomeContainer() {
+  const chatHistory = document.getElementById("chatHistory");
+  const welcomeContainer = document.createElement("div");
+  welcomeContainer.className = "welcome-container";
+  welcomeContainer.innerHTML = `
+    <div class="welcome-image-container">
+      <img class="welcome-image" src="/static/images/logo_img.png" alt="MS Learner Logo" />
+      <img class="welcome-image-bar" src="/static/images/logo_type.png" alt="MS Learner Type" />
+    </div>
+    <div class="welcome-content">
+      <div class="welcome-title">
+        <span>MS Learner</span>
+        <span class="welcome-description">는 Microsoft Azure의 제품군의 활용과 이를 통한 서비스 구현을 돕는 비공식 AI 챗봇 서비스입니다.</span>
+      </div>
+      <div class="welcome-links-container">
+        <div class="welcome-links-title">
+          <div class="welcome-links-title-text">활용 사이트</div>
+        </div>
+        <div class="welcome-links">
+          <a href="https://mslearn.com/" class="welcome-link" target="_blank">mslearn.com/</a>
+          <a href="https://azure.microsoft.com/" class="welcome-link" target="_blank">azure.microsoft.com/</a>
+          <a href="https://github.com/azure/" class="welcome-link" target="_blank">github.com/azure/</a>
+          <a href="https://techcommunity.microsoft.com/" class="welcome-link" target="_blank">techcommunity.microsoft.com/</a>
+          <a href="https://docs.microsoft.com/" class="welcome-link" target="_blank">docs.microsoft.com/</a>
+        </div>
+      </div>
+    </div>
+  `;
+  chatHistory.appendChild(welcomeContainer);
+}
 
 // 단일 DOMContentLoaded 이벤트 리스너
 document.addEventListener("DOMContentLoaded", () => {

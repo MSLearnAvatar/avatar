@@ -1,6 +1,9 @@
+/* Google Fonts Import */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+
 /* 기본 스타일 */
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
   margin: 0;
   padding: 1em;
@@ -19,7 +22,7 @@ body {
 button {
   background-color: #1976d2;
   color: #fff;
-  font-family: "Arial", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 0.9em;
   padding: 8px 16px;
   border: none;
@@ -42,41 +45,32 @@ button:disabled {
 /* 레이아웃 */
 .container {
   display: flex;
-  flex-direction: column;
-  max-width: 1200px;
+  flex-direction: row;
+  max-width: 1600px;
   margin: 0 auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  border-radius: 8px;
+  gap: 20px;
   padding: 20px;
+}
+
+#videoContainer {
+  position: relative;
+  width: 30%;
+  min-height: 600px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .main-container {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-  }
-
-  #videoContainer,
-  .chat-container {
-    width: 100% !important;
-  }
-}
-
-/* 아바타 컨테이너 */
-#videoContainer {
-  position: relative;
-  width: 60%;
-  min-height: 400px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: #f0f0f0;
+  flex-direction: column;
+  width: 70%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 #remoteVideo {
@@ -91,15 +85,27 @@ button:disabled {
   max-width: 100%;
 }
 
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+
+  #videoContainer,
+  .main-container {
+    width: 100% !important;
+  }
+}
+
 /* 채팅 컨테이너 */
 .chat-container {
-  width: 40%;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 #chatHistory {
-  height: 400px;
+  height: 500px;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
@@ -150,10 +156,22 @@ button:disabled {
   box-sizing: border-box;
 }
 
+/* 컨트롤 버튼 */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
 /* 입력 영역 */
 .input-area {
   display: flex;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 #userInput {
@@ -162,7 +180,7 @@ button:disabled {
   border: 1px solid #ddd;
   border-radius: 4px;
   margin-right: 10px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   resize: vertical;
   min-height: 40px;
   max-height: 120px;
@@ -172,15 +190,6 @@ button:disabled {
 #userInput:focus {
   outline: none;
   border-color: #1976d2;
-}
-
-/* 컨트롤 버튼 */
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-  justify-content: center;
 }
 
 /* 로더 */
@@ -255,4 +264,108 @@ button:disabled {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+/* Welcome Container Styles */
+.welcome-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 38px;
+  padding: 20px;
+}
+
+.welcome-image-container {
+  width: 296px;
+  height: 307px;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-image {
+  width: 284px;
+  height: 252px;
+  left: 12px;
+  top: 0;
+  position: absolute;
+  object-fit: contain;
+}
+
+.welcome-image-bar {
+  width: 276px;
+  height: 42px;
+  left: 0;
+  top: 265px;
+  position: absolute;
+  object-fit: contain;
+}
+
+.welcome-content {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.welcome-title {
+  align-self: stretch;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome-description {
+  color: black;
+  font-size: 18px;
+  font-weight: 400;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome-links-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 27px;
+}
+
+.welcome-links-title {
+  padding-right: 12px;
+  border-right: 1px solid rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.welcome-links-title-text {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.welcome-links {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.welcome-link {
+  color: #407fff;
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.welcome-link:hover {
+  color: #2d5bb8;
 }
