@@ -12,8 +12,7 @@ let currentDate = new Date();
 
 // WebSocket 연결 설정
 function connectWebSocket() {
-  const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-  ws = new WebSocket(`${protocol}//${window.location.host}/api/ws`);
+  ws = new WebSocket("wss://team8-api-service.azurewebsites.net/api/ws");
 
   ws.onopen = function () {
     console.log("WebSocket 연결 성공");

@@ -1,11 +1,6 @@
 {
   "routes": [
     {
-      "route": "/api/ws",
-      "allowedRoles": ["anonymous"],
-      "backendUri": "https://team8-api-service.azurewebsites.net/api/ws"
-    },
-    {
       "route": "/api/*",
       "allowedRoles": ["anonymous"],
       "backendUri": "https://team8-api-service.azurewebsites.net/api/*"
