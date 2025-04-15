@@ -151,12 +151,10 @@ async function initializeAvatar() {
     document.getElementById("startSessionButton").disabled = true;
 
     // Speech SDK 설정
-    const speechKey = document
-      .querySelector('meta[name="speech-key"]')
-      .getAttribute("content");
-    const speechRegion = document
-      .querySelector('meta[name="speech-region"]')
-      .getAttribute("content");
+    // 실제 region 값으로 수정
+    const speechRegion = "westeurope"; // 예시: 한국중앙
+    const speechKey =
+      "2AFeCiGQHFE1gfxGqe5ROLxTaEi8fOERAa70vtwq1sZOngKeLcmVJQQJ99BDAC5RqLJXJ3w3AAAYACOGiZ1h"; // 실제 키로 교체
 
     console.log("Speech 설정:", {
       speechKeyExists: speechKey ? true : false,
