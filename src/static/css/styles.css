@@ -12,13 +12,6 @@ body {
   color: #333;
 }
 
-#pageTitle {
-  text-align: center;
-  color: #1976d2;
-  margin-bottom: 20px;
-  font-size: 2em;
-}
-
 button {
   background-color: #1976d2;
   color: #fff;
@@ -106,14 +99,12 @@ button:disabled {
 }
 
 #chatHistory {
-  height: 600px;
+  height: 460px; /*추후 변경*/
   padding: 10px;
-  overflow-y: auto;
-  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  min-height: 0;
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
 
 .user-message,
