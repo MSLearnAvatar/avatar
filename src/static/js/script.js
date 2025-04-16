@@ -433,7 +433,12 @@ async function speak(text) {
                    .replace(/</g, "&lt;")
                    .replace(/>/g, "&gt;")
                    .replace(/"/g, "&quot;")
-                   .replace(/'/g, "&apos;")}
+                   .replace(/'/g, "&apos;")
+                   .replace(
+                     /\*\*([^*]+)\*\*/g,
+                     '<emphasis level="strong">$1</emphasis>'
+                   )}
+                  }
              </voice>
          </speak>`;
 
