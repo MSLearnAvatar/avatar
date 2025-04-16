@@ -13,6 +13,8 @@ body {
 }
 
 button {
+  width: 160px;
+  height: 40px;
   background-color: #1976d2;
   color: #fff;
   font-family: "Noto Sans KR", sans-serif;
@@ -21,8 +23,8 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin: 10px 0 1em 0;
   transition: background-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 button:hover {
@@ -41,7 +43,6 @@ button:disabled {
   flex-direction: row;
   max-width: 1600px;
   margin: 0 auto;
-  gap: 20px;
   padding: 20px;
 }
 
@@ -56,6 +57,7 @@ button:disabled {
 }
 
 .main-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -67,18 +69,25 @@ button:disabled {
 
 #remoteVideo {
   position: absolute;
-  width: 1400px;
+  width: 1200px;
   height: auto;
-  left: 50%;
   transform: translateX(-50%);
   flex-shrink: 0;
   pointer-events: none;
+  margin: 0 auto;
+  image-rendering: pixelated; /* 렌더링 깔끔하게 */
+  backface-visibility: hidden;
+  transform: translateZ(0); /* 강제로 GPU 렌더링 유도 */
 }
 
 #remoteVideo video {
   width: 100%;
   height: auto;
-  background: none;
+  display: block;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 @media (max-width: 1200px) {
@@ -102,7 +111,7 @@ button:disabled {
 }
 
 #chatHistory {
-  height: 460px; /*추후 변경*/
+  height: 600px; /*추후 변경*/
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -146,13 +155,20 @@ button:disabled {
 
 /* 컨트롤 버튼 */
 .controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: auto;
-  padding-top: 20px;
-  border-top: 1px solid #ddd;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; /* 버튼 사이 간격을 주고 싶다면 이걸 추가! */
 }
 
 /* 입력 영역 */
@@ -219,6 +235,23 @@ button:disabled {
 #sendButton:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+/* 아바타 버튼 */
+.session-button {
+  width: 200px;
+  height: 60px;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  background-color: #007aff;
+  color: white;
+  cursor: pointer;
+}
+
+.session-button:hover {
+  background-color: #005fcc;
 }
 
 /* 로더 */
@@ -305,31 +338,26 @@ button:disabled {
   align-items: center;
   gap: 10px;
   padding: 10px;
-  overflow-y: auto;
 }
 
 .welcome-image-container {
   width: 296px;
-  height: 307px;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .welcome-image {
-  width: 236px;
-  height: 210px;
-  left: 12px;
-  top: 0;
-  position: absolute;
+  width: 230%;
+  height: auto;
   object-fit: contain;
 }
 
 .welcome-image-bar {
-  width: 230px;
-  height: 35px;
-  left: 0;
-  top: 220px;
-  position: absolute;
+  width: 100%;
+  height: auto;
   object-fit: contain;
 }
 
@@ -339,13 +367,22 @@ button:disabled {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
 }
 
 .welcome-title {
   align-self: stretch;
   color: black;
   font-size: 18px;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome-subtitle {
+  align-self: stretch;
+  color: black;
+  font-size: 14px;
   font-weight: 600;
   justify-content: center;
   text-align: center;

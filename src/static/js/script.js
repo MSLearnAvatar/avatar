@@ -68,13 +68,15 @@ function initializeWelcomeContainer() {
   welcomeContainer.className = "welcome-container";
   welcomeContainer.innerHTML = `
     <div class="welcome-image-container">
-      <img class="welcome-image" src="/static/images/logo_img.png" alt="MS Learner Logo" />
-      <img class="welcome-image-bar" src="/static/images/logo_type.png" alt="MS Learner Type" />
+      <img class="welcome-image" src="/static/images/logo_new.png" alt="MS Learner Logo" />
     </div>
     <div class="welcome-content">
       <div class="welcome-title">
-        <span>MS Learner</span>
+        <span>Mr.Azure</span>
         <span class="welcome-description">는 Microsoft Azure 제품군의 활용과 이를 통한 서비스 구현을 돕는 비공식 AI 챗봇 서비스입니다.</span>
+      </div>
+      <div class="welcome-subtitle">
+        <span>"아바타 세션 시작" 을 눌러 Mrs.Azure의 음성 지원을 받아보세요!</span>
       </div>
       <div class="welcome-links-container">
         <div class="welcome-links-title">
@@ -119,11 +121,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (startSessionButton) {
-    startSessionButton.addEventListener("click", initializeAvatar);
+    startSessionButton.addEventListener("click", () => {
+      initializeAvatar(); // 기존 기능 유지
+      startSessionButton.style.display = "none"; // 시작 버튼 숨김
+      stopSessionButton.style.display = "inline-block"; // 정지 버튼 표시
+    });
   }
 
   if (stopSessionButton) {
-    stopSessionButton.addEventListener("click", stopSession);
+    stopSessionButton.addEventListener("click", () => {
+      stopSession(); // 기존 기능 유지
+      stopSessionButton.style.display = "none"; // 정지 버튼 숨김
+      startSessionButton.style.display = "inline-block"; // 시작 버튼 표시
+    });
   }
 
   if (stopSpeakingButton) {
@@ -529,23 +539,35 @@ function addMessage(type, content) {
   switch (type) {
     case "user":
       messageDiv.className = "user-message";
-      messageDiv.textContent = `${content}`;
+      messageDiv.innerHTML = marked.parse(`${content}`);
+      messageDiv.style.fontSize = "1rem";
+      messageDiv.style.fontWeight = "600";
       timestampDiv.className = "message-timestamp";
       timestampDiv.textContent = formatTimestamp(currentDate);
+      timestampDiv.style.fontSize = "0.8rem";
+      messageDiv.style.fontWeight = "100";
       messageDiv.appendChild(timestampDiv);
       break;
     case "assistant":
       messageDiv.className = "assistant-message";
-      messageDiv.innerHTML = marked.parse(`AI: ${content}`);
+      messageDiv.innerHTML = marked.parse(`${content}`);
+      messageDiv.style.fontSize = "1rem";
+      messageDiv.style.fontWeight = "600";
       timestampDiv.className = "message-timestamp";
       timestampDiv.textContent = formatTimestamp(currentDate);
+      timestampDiv.style.fontSize = "0.8rem";
+      messageDiv.style.fontWeight = "100";
       messageDiv.appendChild(timestampDiv);
       break;
     case "assistant-text":
       messageDiv.className = "assistant-message";
-      messageDiv.innerHTML = marked.parse(`Text AI: ${content}`);
+      messageDiv.innerHTML = marked.parse(`${content}`);
+      messageDiv.style.fontSize = "1rem";
+      messageDiv.style.fontWeight = "600";
       timestampDiv.className = "message-timestamp";
       timestampDiv.textContent = formatTimestamp(currentDate);
+      timestampDiv.style.fontSize = "0.8rem";
+      messageDiv.style.fontWeight = "100";
       messageDiv.appendChild(timestampDiv);
       break;
     case "system":

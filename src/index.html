@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="speech-key" content="{{ speech_key }}" />
     <meta name="speech-region" content="{{ speech_region }}" />
-    <title>MS Learner</title>
+    <title>Mr.Azure</title>
     <script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
     <link rel="stylesheet" href="/static/css/styles.css" />
     <link
@@ -19,6 +19,47 @@
   <body>
     <div class="container">
       <div id="videoContainer">
+        <div class="loader" id="loader"></div>
+        <div class="controls">
+          <button id="startSessionButton" class="session-button">
+            아바타 세션 시작
+          </button>
+          <button
+            id="stopSessionButton"
+            class="session-button"
+            style="display: none"
+          >
+            세션 중지
+          </button>
+          <button id="stopSpeakingButton" disabled>
+            <img
+              src="/static/images/icon_volumeoff.svg"
+              alt="Stop Speaking"
+              style="
+                width: 20px;
+                height: 20px;
+                margin-right: 16px;
+                justify-content: flex-start;
+                vertical-align: middle;
+              "
+            />
+            말하기 중지
+          </button>
+          <button id="clearChatButton">
+            <img
+              src="/static/images/icon_delete.svg"
+              alt="Clear Chat"
+              style="
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                justify-content: flex-start;
+                vertical-align: middle;
+              "
+            />
+            대화 내역 삭제
+          </button>
+        </div>
         <div id="remoteVideo"></div>
         <div id="subtitles" class="hidden"></div>
       </div>
@@ -35,14 +76,6 @@
               <img src="/static/images/icon_send.svg" alt="Send" />
             </button>
           </div>
-        </div>
-
-        <div class="controls">
-          <button id="startSessionButton">아바타 세션 시작</button>
-          <button id="stopSessionButton" disabled>세션 중지</button>
-          <button id="stopSpeakingButton" disabled>말하기 중지</button>
-          <button id="clearChatButton">대화 내역 지우기</button>
-          <div class="loader" id="loader"></div>
         </div>
       </div>
     </div>
