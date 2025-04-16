@@ -433,12 +433,7 @@ async function speak(text) {
                    .replace(/</g, "&lt;")
                    .replace(/>/g, "&gt;")
                    .replace(/"/g, "&quot;")
-                   .replace(/'/g, "&apos;")
-                   .replace(
-                     /\*\*([^*]+)\*\*/g,
-                     '<emphasis level="strong">$1</emphasis>'
-                   )}
-                  }
+                   .replace(/'/g, "&apos;")}
              </voice>
          </speak>`;
 
@@ -550,7 +545,7 @@ function addMessage(type, content) {
       timestampDiv.className = "message-timestamp";
       timestampDiv.textContent = formatTimestamp(currentDate);
       timestampDiv.style.fontSize = "0.8rem";
-      messageDiv.style.fontWeight = "100";
+      timestampDiv.style.fontWeight = "100";
       messageDiv.appendChild(timestampDiv);
       break;
     case "assistant":
@@ -561,7 +556,7 @@ function addMessage(type, content) {
       timestampDiv.className = "message-timestamp";
       timestampDiv.textContent = formatTimestamp(currentDate);
       timestampDiv.style.fontSize = "0.8rem";
-      messageDiv.style.fontWeight = "100";
+      timestampDiv.style.fontWeight = "100";
       messageDiv.appendChild(timestampDiv);
       break;
     case "assistant-text":
@@ -572,7 +567,7 @@ function addMessage(type, content) {
       timestampDiv.className = "message-timestamp";
       timestampDiv.textContent = formatTimestamp(currentDate);
       timestampDiv.style.fontSize = "0.8rem";
-      messageDiv.style.fontWeight = "100";
+      timestampDiv.style.fontWeight = "100";
       messageDiv.appendChild(timestampDiv);
       break;
     case "system":
