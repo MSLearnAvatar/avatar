@@ -139,7 +139,7 @@ button:disabled {
 }
 
 #chatHistory {
-  height: 580px; /*추후 변경*/
+  height: 472px; /*추후 변경*/
   padding: 10px;
   display: flex;
   flex-direction: column;
